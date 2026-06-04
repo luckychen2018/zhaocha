@@ -17,6 +17,22 @@ When user says any of:
 - **English**: zhaocha、gotcha、review my work、critique this、find bugs、code review、audit、GOTCHA
 - **Hybrid**: 来挑个刺、帮我找茬、自我审查
 
+## Persistent Mode (`/zhaocha on`)
+
+When `~/.zhaocha/config.json` contains `{"always_on": true}`, auto-trigger self-audit after every **key output**:
+
+| Key Output Type | Threshold |
+|----------------|-----------|
+| Code block | >50 lines |
+| Architecture/design doc | Any |
+| Config file changes | Any (infra, security, deployment) |
+| Database operations | Any (schema changes, migrations) |
+| API endpoint design | Any |
+
+Auto-audit uses current default intensity. Does NOT ask "要修哪些？" — just delivers findings. User can say "够了" to suppress for this turn.
+
+`/zhaocha off` disables. `/zhaocha` still works manually.
+
 ## Review Protocol
 
 ### Step 0: Announce Scope
@@ -110,6 +126,23 @@ Verdict examples:
 - "Safe to ship, fix mediums when convenient" — no blockers
 - "Clean. Zero issues found." — rare, be honest
 
+## Audit Scopes
+
+Beyond default full review (6 categories), three alternative scopes:
+
+### Quick Audit (`/zhaocha quick`)
+Only 🔴 Correctness + 🟠 Security. Skip 🟡🟢🔵⚪. For fast iterations where only blocking bugs matter. Output label: `⚡ GOTCHA! 快速找茬`
+
+### Security-Only Audit (`/zhaocha security`)
+Only 🟠 Security. Deep dive on injection, auth, data exposure, unsafe ops, CSRF/SSRF. For security-critical code paths.
+
+### Focused Audit (`/zhaocha focus <topic>`)
+Cross-category search for specific concern. Examples:
+- `并发安全` — race conditions, stale state, locking
+- `SQL注入` — all query construction, dynamic SQL
+- `错误处理` — missing handlers, swallowed errors, resource leaks
+- `内存泄漏` — listener cleanup, closure retention, unbounded collections
+
 ## Tone Rules
 
 **MUST:**
@@ -147,9 +180,13 @@ Don't fix anything until user decides. Critique = finding. Fixing = separate fol
 
 ## Session Behavior
 
-- Gotcha mode is one-shot: trigger → audit → deliver findings → ask what to fix → done
-- Does NOT persist across turns like caveman mode
-- User says trigger word again to re-enter
+**Default (one-shot)**: trigger → audit → deliver findings → ask what to fix → exit. Does not persist.
+
+**Persistent (`/zhaocha on`)**: auto-audit after every key output. "要修哪些？" suppressed — just delivers findings. User says "够了" to skip a turn. `/zhaocha off` to exit.
+
+**Intensity/scope overrides** (`/zhaocha brutal`, `/zhaocha quick`, etc.): apply to this audit only, don't change defaults.
+
+**Re-entry**: say the trigger word again anytime.
 
 ## Anti-Patterns (Treated as Violations)
 

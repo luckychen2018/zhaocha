@@ -108,6 +108,20 @@ curl -o ~/.codex/skills/zhaocha/SKILL.md \
 要修哪些？全部 / 只修严重(🔴🟠) / 先不改
 ```
 
+## 命令体系
+
+| 命令 | 功能 |
+|------|------|
+| `/zhaocha` | 一次性完整审查（6类全覆盖） |
+| `/zhaocha on` | 常驻模式 — 关键输出后自动找茬 |
+| `/zhaocha off` | 关闭常驻 |
+| `/zhaocha sharp` | 锐利模式（默认）— 直接批判 |
+| `/zhaocha gentle` | 温和模式 — 给建议不说教 |
+| `/zhaocha brutal` | 暴击模式 — 代码有罪推定 |
+| `/zhaocha quick` | 快速审查 — 只查正确性+安全 |
+| `/zhaocha security` | 纯安全审计 |
+| `/zhaocha focus <关键词>` | 聚焦审查 — 指定主题 |
+
 ## 触发词
 
 | 语言 | 触发词 |

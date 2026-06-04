@@ -137,6 +137,20 @@ curl -o .cursor/rules/zhaocha.mdc \
 要修哪些？全部 / 只修严重(🔴🟠) / 先不改
 ```
 
+## Commands
+
+| Command | What It Does |
+|---------|-------------|
+| `/zhaocha` | One-shot full audit (all 6 categories) |
+| `/zhaocha on` | Persistent mode — auto-audit after key outputs |
+| `/zhaocha off` | Disable persistent mode |
+| `/zhaocha sharp` | Sharp intensity (default) — direct, critical |
+| `/zhaocha gentle` | Gentle intensity — suggestions, no pressure |
+| `/zhaocha brutal` | Brutal intensity — code guilty until proven innocent |
+| `/zhaocha quick` | Fast audit — correctness + security only |
+| `/zhaocha security` | Security-only deep dive |
+| `/zhaocha focus <keyword>` | Focused audit — specific concern only |
+
 ## Trigger Words
 
 | Language | Trigger Words |
