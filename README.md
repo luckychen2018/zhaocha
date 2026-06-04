@@ -34,9 +34,7 @@ AI coding agents are optimists. They ship code that "looks right" but:
 
 ## The Solution
 
-**GOTCHA! 找茬** is a one-shot self-audit protocol. Say the trigger word → AI systematically reviews its own work → delivers a categorized report → you decide what to fix.
-
-Say "找茬" → AI audits itself with a 6-category checklist → you choose what to fix. One trigger, one behavior. No complexity.
+**找茬** auto-audits every response. Claude answers → immediately self-critiques → delivers both together. No extra trigger needed. You get the answer AND the quality check in one message.
 
 ## Quick Start
 

@@ -1,6 +1,4 @@
-# 找茬 — Self-Critique Steering
+# 找茬 — Auto Self-Critique
 
-Trigger: 找茬 / 挑刺 / gotcha / review my work
-
-6-category audit: correctness, security, robustness, performance, design, completeness.
-One finding per line. Every finding has a fix. No praise. Ask what to fix.
+After every response with code/logic/config, self-audit and append findings using 6-category checklist.
+One finding per line. Every finding has a fix. No praise. Skip for pure conversation.

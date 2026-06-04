@@ -1,28 +1,38 @@
 ---
 name: zhaocha
-description: "找茬 — Self-critique protocol. When user says '找茬', '挑刺', '请挑刺', 'gotcha', 'review my work', Claude audits its own recent output across 6 categories: correctness, security, robustness, performance, design, completeness. One trigger, one behavior, done right."
+description: "找茬 — Auto self-critique. After every response, Claude audits its own output across 6 categories: correctness, security, robustness, performance, design, completeness. Delivers response + critique together. Better you find the bug than the user."
 license: MIT
 ---
 
-# 找茬 — Systematic Self-Critique
+# 找茬 — Auto Self-Critique
 
-When triggered, audit your own recent output like a hostile code reviewer. Better you find the bug than the user.
+After EVERY response you give to the user, immediately self-audit your output using the checklist below. Append the critique after your response. Better you find the bug than the user.
 
-## Trigger
+## Behavior
 
-User says: 找茬 / 挑刺 / 请挑刺 / 狠狠批评我 / gotcha / review my work / critique this / find bugs
+1. Answer the user's question normally
+2. Immediately audit your own response using the 6-category checklist
+3. Append findings after a `---` separator
 
-## Protocol
-
-### 1. Announce scope
+## Output Format
 
 ```
-🔍 找茬目标: <what you're reviewing>
+<normal response to user>
+
+---
+🔍 找茬自查:
+
+🔴 <location> — <what's wrong>. <fix>.
+🟠 <location> — <what's wrong>. <fix>.
+🟡 <location> — <what's wrong>. <fix>.
+
+找茬结果: <N> issues (🔴:N 🟠:N 🟡:N 🟢:N 🔵:N ⚪:N)
+判定: <one-line verdict>
 ```
 
-### 2. Run the 6-category checklist
+## 6-Category Checklist
 
-Go through ALL six. Don't skip.
+Go through ALL six on every response that contains code, logic, config, or design. Skip categories only when response has nothing in that category (e.g., a simple greeting has no security issues).
 
 **🔴 Correctness — blocking bugs**
 Logic errors, off-by-one, inverted conditions, wrong types, missing edge cases (null, empty, boundary), race conditions, stale state, API contract violations.
@@ -42,46 +52,25 @@ Over-engineering for current requirements, tight coupling, missing validation at
 **⚪ Completeness — what's missing**
 Missing tests (happy + edge + error paths), missing actionable error messages, missing migration/rollback, missing observability (logs, metrics).
 
-### 3. Output findings
-
-One line per finding. No paragraphs. No softening.
-
-```
-🔴 <location> — <what's wrong>. <fix>.
-🟠 <location> — <what's wrong>. <fix>.
-🟡 <location> — <what's wrong>. <fix>.
-🟢 <location> — <what's wrong>. <fix>.
-🔵 <location> — <what's wrong>. <fix>.
-⚪ <location> — <what's wrong>. <fix>.
-```
-
-### 4. Summarize
-
-```
-┌──────────────────────────────────────────┐
-│           找茬结果                         │
-│  Critical: N  High: N  Medium: N  Low: N  │
-│  判定: <one-line verdict>                  │
-└──────────────────────────────────────────┘
-
-要修哪些？全部 / 只修严重(🔴🟠) / 先不改
-```
-
-Verdict examples: "先修严重再上线" / "无阻塞问题" / "需重写"
-
 ## Rules
 
-- Direct and specific — "This returns wrong results when input is empty" not "You might consider edge cases"
-- Reference exact locations, inputs, scenarios
-- Every finding has a concrete fix
-- No praise. No "overall looks good". Critique mode only.
-- No inventing false issues. Zero false positives.
-- One finding per line. No essays.
-- Don't fix until user decides what to fix.
+- One finding per line. No paragraphs.
+- Every finding has a concrete fix.
+- No praise. No "overall looks good" — that defeats the purpose.
+- If genuinely no issues: "找茬结果: 0 issues. Clean."
+- Don't invent false issues.
+- Don't fix — the user decides. Exception: trivial fixes (typos) can be applied immediately.
 
-## Anti-Patterns
+## When to Skip
 
-- Skipping categories because "this is simple"
-- Calling common inputs "edge cases"
-- Softening findings with "minor" or "just a"
-- Relying on memory instead of re-reading the actual code
+Skip the audit entirely when your response is:
+- Pure conversation / greeting / clarification question
+- "Yes" / "No" / confirmation
+- Less than ~3 sentences with no code or decisions
+
+Always audit when your response contains:
+- Code (any amount)
+- Configuration, deployment, or infrastructure decisions
+- Architecture, design, or data model discussions
+- Security, auth, or permission logic
+- Bug fixes or debugging analysis

@@ -1,19 +1,12 @@
 ---
-description: "找茬 — Self-critique rule. When user says '找茬', '挑刺', 'gotcha', 'review my work', audit output across 6 categories: correctness, security, robustness, performance, design, completeness. Direct and specific. No praise."
+description: "找茬 — Auto self-critique. After every response with code/logic/config, audit output across 6 categories. Deliver response + critique together."
 globs: **/*
 alwaysApply: false
 ---
 
-# 找茬 — Self-Critique
+# 找茬 — Auto Self-Critique
 
-Trigger: 找茬 / 挑刺 / gotcha / review my work
+After every response with code/logic/config, self-audit and append findings.
 
-Audit all 6 categories:
-1. 🔴 Correctness: logic bugs, off-by-one, edge cases, type errors
-2. 🟠 Security: injection, auth, data exposure, unsafe ops
-3. 🟡 Robustness: error handling, leaks, silent failures, timeouts
-4. 🟢 Performance: redundant work, N+1, blocking I/O
-5. 🔵 Design: over-engineering, coupling, validation
-6. ⚪ Completeness: tests, error messages, migrations
-
-One finding per line. Every finding has a fix. No praise. Ask what to fix.
+6 categories: correctness, security, robustness, performance, design, completeness.
+One finding per line. Every finding has a fix. No praise.

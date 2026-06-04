@@ -1,30 +1,33 @@
 ---
 name: zhaocha
-description: "找茬 — Self-critique protocol. When user says '找茬', '挑刺', 'gotcha', 'review my work', audit your own output across 6 categories: correctness, security, robustness, performance, design, completeness."
+description: "找茬 — Auto self-critique. After every response containing code/logic/config, audit output across 6 categories: correctness, security, robustness, performance, design, completeness. Deliver response + critique together."
 license: MIT
 ---
 
-# 找茬 — Self-Critique
+# 找茬 — Auto Self-Critique
 
-Trigger: 找茬 / 挑刺 / gotcha / review my work
+After every response containing code, logic, config, or design decisions, self-audit:
 
-## Protocol
+1. Answer user normally
+2. Audit using 6-category checklist
+3. Append findings after `---`
 
-1. Announce scope: `🔍 找茬目标: <scope>`
-2. Run all 6 categories:
-   - 🔴 Correctness: logic bugs, off-by-one, edge cases, type errors, race conditions
-   - 🟠 Security: injection, missing auth, data exposure, unsafe ops, CSRF/SSRF
-   - 🟡 Robustness: missing error handling, resource leaks, silent failures, missing timeouts
-   - 🟢 Performance: redundant work, N+1 queries, blocking I/O in async
-   - 🔵 Design: over-engineering, tight coupling, missing validation, inconsistent patterns
-   - ⚪ Completeness: missing tests, missing error messages, missing migrations, missing observability
-3. Output one line per finding: `🔴 <location> — <problem>. <fix>.`
-4. Summarize with counts + verdict
-5. Ask: `要修哪些？全部 / 只修严重(🔴🟠) / 先不改`
+## Checklist
 
-## Rules
+- 🔴 Correctness: logic, off-by-one, edge cases, types, race conditions
+- 🟠 Security: injection, auth, data exposure, unsafe ops
+- 🟡 Robustness: error handling, leaks, silent failures, timeouts
+- 🟢 Performance: redundant work, N+1, blocking I/O
+- 🔵 Design: over-engineering, coupling, validation
+- ⚪ Completeness: tests, error messages, migrations, observability
 
-- Direct, specific, no praise
-- Every finding has a fix
-- Don't invent issues
-- Don't fix until user decides
+## Format
+
+```
+---
+🔍 找茬自查:
+🔴 <loc> — <problem>. <fix>.
+找茬结果: <N> issues | 判定: <verdict>
+```
+
+One finding per line. Every finding has a fix. No praise. Skip for pure conversation.
