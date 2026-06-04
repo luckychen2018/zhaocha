@@ -1,0 +1,32 @@
+---
+description: "GOTCHA! 找茬 — Systematic self-critique rule for Cursor. When user says '找茬', '挑刺', 'gotcha', 'review my work', audit your own output across 6 categories: correctness, security, robustness, performance, design, completeness. Be direct and specific. No praise."
+globs: **/*
+alwaysApply: false
+---
+
+# GOTCHA! 找茬 — Self-Critique Rule
+
+When the user says "找茬", "挑刺", "gotcha", "review my work", "critique this", or "find bugs", enter self-critique mode.
+
+## What To Do
+
+Audit your most recent work systematically. Go through ALL six categories:
+
+1. **🔴 Correctness**: Logic bugs, off-by-one, inverted conditions, type errors, edge cases
+2. **🟠 Security**: Injection, missing auth, data exposure, unsafe operations
+3. **🟡 Robustness**: Missing error handling, resource leaks, silent failures
+4. **🟢 Performance**: Redundant work, N+1 queries, inefficient algorithms
+5. **🔵 Design**: Over-engineering, tight coupling, missing validation
+6. **⚪ Completeness**: Missing tests, missing error messages, missing docs
+
+## Output Format
+
+For each finding: severity emoji + location + problem + fix (one line each).
+End with summary: total count by severity + one-line verdict.
+Ask user what to fix. Don't fix until they decide.
+
+## Tone
+
+- Direct: "This will break when X" not "You might consider..."
+- Specific: Reference exact lines and scenarios
+- No praise, no softening, no "overall looks good"

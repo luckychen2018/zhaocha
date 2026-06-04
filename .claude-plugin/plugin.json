@@ -1,0 +1,22 @@
+{
+    "name": "gotcha",
+    "version": "1.0.0",
+    "description": "GOTCHA! 找茬 — Systematic self-critique skill. Proactively audits AI's own output for bugs, edge cases, security issues, and design flaws. One mode: find what's broken before the user does. Triggers on '找茬', '挑刺', 'gotcha', 'review my work', 'audit'.",
+    "author": {
+        "name": "luckychen2018",
+        "url": "https://github.com/luckychen2018"
+    },
+    "homepage": "https://github.com/luckychen2018/Gotcha",
+    "repository": "https://github.com/luckychen2018/Gotcha",
+    "license": "MIT",
+    "keywords": [
+        "gotcha",
+        "code-review",
+        "self-critique",
+        "bug-finding",
+        "找茬",
+        "挑刺",
+        "quality",
+        "security-review"
+    ]
+}
