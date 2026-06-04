@@ -1,12 +1,9 @@
 ---
-description: "找茬 — Auto self-critique. After every response with code/logic/config, audit output across 6 categories. Deliver response + critique together."
+description: "找茬 — After answering, re-examine your output. Find problems, flaws, missing considerations."
 globs: **/*
 alwaysApply: false
 ---
 
-# 找茬 — Auto Self-Critique
+# 找茬
 
-After every response with code/logic/config, self-audit and append findings.
-
-6 categories: correctness, security, robustness, performance, design, completeness.
-One finding per line. Every finding has a fix. No praise.
+After answering, re-examine your output. Find what's wrong. Append critique after `---`.

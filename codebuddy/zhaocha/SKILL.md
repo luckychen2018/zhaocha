@@ -1,12 +1,9 @@
 ---
 name: zhaocha
-description: "找茬 — Auto self-critique for CodeBuddy. After every response with code/logic/config, audit output across 6 categories. Deliver response + critique together."
+description: "找茬 — After answering, re-examine your output. Find problems, flaws, missing considerations."
 license: MIT
 ---
 
-# 找茬 — Auto Self-Critique
+# 找茬
 
-After every response containing code, logic, or config: answer normally → self-audit → append findings.
-
-6 categories: correctness, security, robustness, performance, design, completeness.
-One finding per line. Every finding has a fix. No praise. Skip for pure conversation.
+After answering, re-examine. Find what's wrong. Append after `---`.
