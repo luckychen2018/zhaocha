@@ -17,7 +17,7 @@
 
 > 最好的 Bug 是你自己找到的那个。GOTCHA 让你的 AI 学会自我审查——系统化、不留情面地找出问题，在用户看到之前。
 
-一个 AI Coding Agent 技能，触发**结构化自我审查协议**。当你说"找茬"或"gotcha"时，AI 变成自己最严厉的代码审查员——逐行审计 bug、边界 case、安全漏洞、设计缺陷。支持 **Claude Code**、**OpenAI Codex CLI**、**CodeBuddy**、**Cursor**、**Kiro** 和 **VSCode (GitHub Copilot)**。
+一个 AI Coding Agent 技能，触发**结构化自我审查协议**。当你说"找茬"或"zhaocha"时，AI 变成自己最严厉的代码审查员——逐行审计 bug、边界 case、安全漏洞、设计缺陷。支持 **Claude Code**、**OpenAI Codex CLI**、**CodeBuddy**、**Cursor**、**Kiro** 和 **VSCode (GitHub Copilot)**。
 
 ## 痛点
 
@@ -37,7 +37,7 @@ AI 编程助手天生乐观。它们交付的代码"看起来对"：
 **GOTCHA! 找茬** 是一个一次性的自我审计协议。说触发词 → AI 系统化审查自己的产出 → 交付分类报告 → 你决定修什么。
 
 三步闭环：
-1. **触发** — 说"找茬" / "gotcha" / "挑刺"
+1. **触发** — 说"找茬" / "zhaocha" / "挑刺"
 2. **审查** — AI 执行 6 类系统检查清单
 3. **决策** — 你选：全部修 / 只修严重 / 先不改
 
@@ -47,21 +47,21 @@ AI 编程助手天生乐观。它们交付的代码"看起来对"：
 
 ```bash
 claude plugin marketplace add luckychen2018/Gotcha
-claude plugin install gotcha@gotcha-skills
+claude plugin install zhaocha@zhaocha-skills
 ```
 
 或手动安装：
 
 ```bash
-git clone https://github.com/luckychen2018/Gotcha ~/.claude/plugins/gotcha
+git clone https://github.com/luckychen2018/Gotcha ~/.claude/plugins/zhaocha
 ```
 
 ### OpenAI Codex CLI
 
 ```bash
-mkdir -p ~/.codex/skills/gotcha
-curl -o ~/.codex/skills/gotcha/SKILL.md \
-  https://raw.githubusercontent.com/luckychen2018/Gotcha/main/codex/gotcha/SKILL.md
+mkdir -p ~/.codex/skills/zhaocha
+curl -o ~/.codex/skills/zhaocha/SKILL.md \
+  https://raw.githubusercontent.com/luckychen2018/Gotcha/main/codex/zhaocha/SKILL.md
 ```
 
 ### 其他平台
@@ -85,7 +85,7 @@ curl -o ~/.codex/skills/gotcha/SKILL.md \
 
 | 级别 | 触发词 | 行为 |
 |------|-------|------|
-| **Sharp** (默认) | 找茬 / gotcha | 直接、批判、无糖衣。完整清单。 |
+| **Sharp** (默认) | 找茬 / zhaocha | 直接、批判、无糖衣。完整清单。 |
 | **Gentle** | 温柔一点 | 语气软、审查一样全。 |
 | **Brutal** | 狠一点 / 往死里批 | 极致严苛。每行代码有罪推定。 |
 
@@ -113,7 +113,7 @@ curl -o ~/.codex/skills/gotcha/SKILL.md \
 | 语言 | 触发词 |
 |------|-------|
 | 中文 | 找茬、挑刺、批评、批判、自查、挑毛病、狠狠批评我 |
-| 英文 | gotcha、review my work、critique this、find bugs、audit |
+| 英文 | zhaocha、gotcha、review my work、critique this、find bugs、audit |
 | 混合 | 来挑个刺、帮我找茬、自我审查 |
 
 ## 理念

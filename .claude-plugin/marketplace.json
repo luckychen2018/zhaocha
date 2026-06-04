@@ -1,5 +1,5 @@
 {
-    "name": "gotcha-skills",
+    "name": "zhaocha-skills",
     "description": "GOTCHA! 找茬 — Systematic self-critique for AI coding agents. Proactively audits your own output for bugs, edge cases, security vulnerabilities, and design issues before the user finds them. One focused skill: find what's broken, report it clearly, let the user decide what to fix.",
     "owner": {
         "name": "luckychen2018",
@@ -7,7 +7,7 @@
     },
     "plugins": [
         {
-            "name": "gotcha",
+            "name": "zhaocha",
             "description": "GOTCHA! 找茬 — Systematic self-critique protocol. Six-category audit (Correctness, Security, Robustness, Performance, Design, Completeness). Three intensity levels. One-shot trigger → audit → report → user decides what to fix.",
             "version": "1.0.0",
             "source": "./",

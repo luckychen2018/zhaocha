@@ -1,5 +1,5 @@
 ---
-name: gotcha
+name: zhaocha
 description: "GOTCHA! 找茬 — Systematic self-critique for CodeBuddy. Trigger when user says '找茬', '挑刺', 'critique', 'review my work', 'gotcha'. Six-category audit: correctness, security, robustness, performance, design, completeness. One-shot mode."
 license: MIT
 ---

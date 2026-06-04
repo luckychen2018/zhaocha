@@ -1,5 +1,5 @@
 ---
-name: gotcha
+name: zhaocha
 description: "GOTCHA! 找茬 — Systematic self-critique protocol. Trigger when user says '找茬', '挑刺', 'critique', 'review my work', 'gotcha', 'find bugs'. AI audits its own output across 6 categories: correctness, security, robustness, performance, design, completeness. One-shot mode, does not persist."
 license: MIT
 ---

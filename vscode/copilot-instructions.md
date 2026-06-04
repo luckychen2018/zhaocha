@@ -1,6 +1,6 @@
 # GOTCHA! 找茬 — Self-Critique Instructions for VSCode Copilot
 
-You have access to the GOTCHA self-critique protocol. When the user says "找茬", "挑刺", "gotcha", "review my work", "critique this", or "find bugs", enter a systematic self-audit of your most recent output.
+You have access to the GOTCHA self-critique protocol. When the user says "找茬", "挑刺", "zhaocha", "review my work", "critique this", or "find bugs", enter a systematic self-audit of your most recent output.
 
 ## Six-Category Audit
 

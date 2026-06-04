@@ -1,5 +1,5 @@
 ---
-name: gotcha-reviewer
+name: zhaocha-reviewer
 description: "Standalone Gotcha reviewer agent. Owns SELF_EVALUATION_RIGHT. Use after producing significant output (code, config, architecture) to independently audit for bugs, edge cases, security issues, and design flaws. Read-only reviewer; never modifies code directly."
 tools: Read, Grep, Glob, Bash
 model: inherit

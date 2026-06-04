@@ -17,7 +17,7 @@
 
 > The best bug is the one you find yourself. GOTCHA makes your AI audit its own output — systematically, mercilessly, before the user ever sees it.
 
-An AI Coding Agent skill that triggers a **structured self-critique protocol**. When you say "找茬" or "gotcha", your AI becomes its own harshest code reviewer — auditing every line for bugs, edge cases, security holes, and design flaws. Works with **Claude Code**, **OpenAI Codex CLI**, **CodeBuddy**, **Cursor**, **Kiro**, and **VSCode (GitHub Copilot)**.
+An AI Coding Agent skill that triggers a **structured self-critique protocol**. When you say "找茬" or "zhaocha", your AI becomes its own harshest code reviewer — auditing every line for bugs, edge cases, security holes, and design flaws. Works with **Claude Code**, **OpenAI Codex CLI**, **CodeBuddy**, **Cursor**, **Kiro**, and **VSCode (GitHub Copilot)**.
 
 ## The Problem
 
@@ -37,7 +37,7 @@ AI coding agents are optimists. They ship code that "looks right" but:
 **GOTCHA! 找茬** is a one-shot self-audit protocol. Say the trigger word → AI systematically reviews its own work → delivers a categorized report → you decide what to fix.
 
 Three steps:
-1. **Trigger** — say "找茬" / "gotcha" / "挑刺" / "review my work"
+1. **Trigger** — say "找茬" / "zhaocha" / "挑刺" / "review my work"
 2. **Audit** — AI runs a 6-category systematic checklist
 3. **Decide** — you choose: fix all / fix critical only / defer
 
@@ -47,13 +47,13 @@ Three steps:
 
 ```bash
 claude plugin marketplace add luckychen2018/Gotcha
-claude plugin install gotcha@gotcha-skills
+claude plugin install zhaocha@zhaocha-skills
 ```
 
 Or manual install:
 
 ```bash
-git clone https://github.com/luckychen2018/Gotcha ~/.claude/plugins/gotcha
+git clone https://github.com/luckychen2018/Gotcha ~/.claude/plugins/zhaocha
 ```
 
 Then in `~/.claude/plugins/installed_plugins.json`:
@@ -62,10 +62,10 @@ Then in `~/.claude/plugins/installed_plugins.json`:
 {
   "version": 2,
   "plugins": {
-    "gotcha@gotcha-skills": [
+    "zhaocha@zhaocha-skills": [
       {
         "scope": "user",
-        "installPath": "/Users/<you>/.claude/plugins/gotcha",
+        "installPath": "/Users/<you>/.claude/plugins/zhaocha",
         "version": "1.0.0"
       }
     ]
@@ -76,25 +76,25 @@ Then in `~/.claude/plugins/installed_plugins.json`:
 ### OpenAI Codex CLI
 
 ```bash
-mkdir -p ~/.codex/skills/gotcha
-curl -o ~/.codex/skills/gotcha/SKILL.md \
-  https://raw.githubusercontent.com/luckychen2018/Gotcha/main/codex/gotcha/SKILL.md
+mkdir -p ~/.codex/skills/zhaocha
+curl -o ~/.codex/skills/zhaocha/SKILL.md \
+  https://raw.githubusercontent.com/luckychen2018/Gotcha/main/codex/zhaocha/SKILL.md
 ```
 
 ### CodeBuddy
 
 ```bash
-mkdir -p ~/.codebuddy/skills/gotcha
-curl -o ~/.codebuddy/skills/gotcha/SKILL.md \
-  https://raw.githubusercontent.com/luckychen2018/Gotcha/main/codebuddy/gotcha/SKILL.md
+mkdir -p ~/.codebuddy/skills/zhaocha
+curl -o ~/.codebuddy/skills/zhaocha/SKILL.md \
+  https://raw.githubusercontent.com/luckychen2018/Gotcha/main/codebuddy/zhaocha/SKILL.md
 ```
 
 ### Cursor
 
 ```bash
 mkdir -p .cursor/rules
-curl -o .cursor/rules/gotcha.mdc \
-  https://raw.githubusercontent.com/luckychen2018/Gotcha/main/cursor/rules/gotcha.mdc
+curl -o .cursor/rules/zhaocha.mdc \
+  https://raw.githubusercontent.com/luckychen2018/Gotcha/main/cursor/rules/zhaocha.mdc
 ```
 
 ## How It Works
@@ -114,7 +114,7 @@ curl -o .cursor/rules/gotcha.mdc \
 
 | Level | Trigger | Behavior |
 |-------|---------|----------|
-| **Sharp** (default) | 找茬 / gotcha | Direct, critical. Full checklist. No praise. |
+| **Sharp** (default) | 找茬 / zhaocha | Direct, critical. Full checklist. No praise. |
 | **Gentle** | 温柔一点 | Softer framing. Same thoroughness. |
 | **Brutal** | 狠一点 / 往死里批 | Maximum harshness. Every line guilty until proven innocent. |
 
@@ -142,7 +142,7 @@ curl -o .cursor/rules/gotcha.mdc \
 | Language | Trigger Words |
 |----------|--------------|
 | Chinese | 找茬、挑刺、批评、批判、自查、挑毛病、狠狠批评我 |
-| English | gotcha、review my work、critique this、find bugs、audit |
+| English | zhaocha、gotcha、review my work、critique this、find bugs、audit |
 | Hybrid | 来挑个刺、帮我找茬、自我审查 |
 
 ## Philosophy
@@ -162,24 +162,23 @@ The skill is deliberately **one-shot**, not persistent. You trigger it when you 
 | Platform | Install Path | Trigger |
 |----------|-------------|---------|
 | **Claude Code** | Plugin marketplace or manual | Skill description matching |
-| **Codex CLI** | `~/.codex/skills/gotcha/SKILL.md` | Skill description matching + `$gotcha` |
-| **CodeBuddy** | `~/.codebuddy/skills/gotcha/SKILL.md` | Skill description matching |
-| **Cursor** | `.cursor/rules/gotcha.mdc` | Agent Discretion (semantic matching) |
-| **Kiro** | `.kiro/steering/gotcha.md` | Steering file (auto) |
+| **Codex CLI** | `~/.codex/skills/zhaocha/SKILL.md` | Skill description matching + `$zhaocha` |
+| **CodeBuddy** | `~/.codebuddy/skills/zhaocha/SKILL.md` | Skill description matching |
+| **Cursor** | `.cursor/rules/zhaocha.mdc` | Agent Discretion (semantic matching) |
+| **Kiro** | `.kiro/steering/zhaocha.md` | Steering file (auto) |
 | **VSCode Copilot** | `.github/copilot-instructions.md` | Always-on instructions |
 
 ## Architecture
 
 ```
-gotcha/
-├── skills/gotcha/SKILL.md        ← Core skill (Claude Code format)
-├── commands/gotcha.md            ← Slash command alias
-├── codex/gotcha/SKILL.md         ← Codex variant
-├── codebuddy/gotcha/SKILL.md     ← CodeBuddy variant
-├── cursor/rules/gotcha.mdc       ← Cursor rule
-├── kiro/steering/gotcha.md       ← Kiro steering file
+├── skills/zhaocha/SKILL.md        ← Core skill (Claude Code format)
+├── commands/zhaocha.md            ← Slash command alias
+├── codex/zhaocha/SKILL.md         ← Codex variant
+├── codebuddy/zhaocha/SKILL.md     ← CodeBuddy variant
+├── cursor/rules/zhaocha.mdc       ← Cursor rule
+├── kiro/steering/zhaocha.md       ← Kiro steering file
 ├── vscode/                       ← VSCode Copilot instructions
-├── agents/gotcha-reviewer.md     ← Standalone review agent
+├── agents/zhaocha-reviewer.md     ← Standalone review agent
 ├── plugin.json                   ← Plugin metadata
 ├── .claude-plugin/               ← Claude Code marketplace
 └── .codebuddy-plugin/            ← CodeBuddy marketplace
@@ -190,7 +189,7 @@ gotcha/
 | | PUA | GOTCHA |
 |---|---|---|
 | **Purpose** | Force AI to not give up | Force AI to find its own bugs |
-| **Trigger** | Repeated failures, user frustration | User says "找茬/gotcha" |
+| **Trigger** | Repeated failures, user frustration | User says "找茬/zhaocha" |
 | **When to use** | AI is stuck, passive, or sloppy | AI has produced output you want reviewed |
 | **Methodology** | Pressure escalation L0-L4 | 6-category systematic audit |
 | **Persistence** | Can be always-on | One-shot, trigger when needed |

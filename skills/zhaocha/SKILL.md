@@ -1,6 +1,6 @@
 ---
-name: gotcha
-description: "GOTCHA! 找茬 — Self-critique protocol. Proactive self-review mode that systematically audits Claude's own work for bugs, edge cases, security vulnerabilities, logic flaws, and design issues BEFORE the user finds them. Triggers on: '找茬', '挑刺', '批评', '批判', '自查', '挑毛病', '狠狠批评', 'review my work', 'critique this', 'find bugs', 'gotcha'. One mode, done right."
+name: zhaocha
+description: "GOTCHA! 找茬 — Self-critique protocol. Proactive self-review mode that systematically audits Claude's own work for bugs, edge cases, security vulnerabilities, logic flaws, and design issues BEFORE the user finds them. Triggers on: '找茬', '挑刺', '批评', '批判', '自查', '挑毛病', '狠狠批评', 'review my work', 'critique this', 'find bugs', 'zhaocha', 'gotcha'. One mode, done right."
 license: MIT
 ---
 
@@ -14,7 +14,7 @@ This skill does ONE thing: makes you audit your own output like a hostile code r
 
 When user says any of:
 - **Chinese**: 找茬、挑刺、批评、批判、自查、挑毛病、狠狠批评我、往死里批
-- **English**: gotcha、review my work、critique this、find bugs、code review、audit、GOTCHA
+- **English**: zhaocha、gotcha、review my work、critique this、find bugs、code review、audit、GOTCHA
 - **Hybrid**: 来挑个刺、帮我找茬、自我审查
 
 ## Review Protocol

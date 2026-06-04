@@ -6,13 +6,13 @@
 
 ```bash
 claude plugin marketplace add luckychen2018/Gotcha
-claude plugin install gotcha@gotcha-skills
+claude plugin install zhaocha@zhaocha-skills
 ```
 
 ### 方法二：源码安装
 
 ```bash
-git clone https://github.com/luckychen2018/Gotcha ~/.claude/plugins/gotcha
+git clone https://github.com/luckychen2018/Gotcha ~/.claude/plugins/zhaocha
 ```
 
 然后在 `~/.claude/plugins/installed_plugins.json` 中注册。
@@ -20,40 +20,40 @@ git clone https://github.com/luckychen2018/Gotcha ~/.claude/plugins/gotcha
 ### 方法三：项目级安装
 
 ```bash
-mkdir -p .claude/skills/gotcha
-cp skills/gotcha/SKILL.md .claude/skills/gotcha/
+mkdir -p .claude/skills/zhaocha
+cp skills/zhaocha/SKILL.md .claude/skills/zhaocha/
 ```
 
 ## OpenAI Codex CLI
 
 ```bash
-mkdir -p ~/.codex/skills/gotcha
-curl -o ~/.codex/skills/gotcha/SKILL.md \
-  https://raw.githubusercontent.com/luckychen2018/Gotcha/main/codex/gotcha/SKILL.md
+mkdir -p ~/.codex/skills/zhaocha
+curl -o ~/.codex/skills/zhaocha/SKILL.md \
+  https://raw.githubusercontent.com/luckychen2018/Gotcha/main/codex/zhaocha/SKILL.md
 ```
 
 ## CodeBuddy
 
 ```bash
-mkdir -p ~/.codebuddy/skills/gotcha
-curl -o ~/.codebuddy/skills/gotcha/SKILL.md \
-  https://raw.githubusercontent.com/luckychen2018/Gotcha/main/codebuddy/gotcha/SKILL.md
+mkdir -p ~/.codebuddy/skills/zhaocha
+curl -o ~/.codebuddy/skills/zhaocha/SKILL.md \
+  https://raw.githubusercontent.com/luckychen2018/Gotcha/main/codebuddy/zhaocha/SKILL.md
 ```
 
 ## Cursor
 
 ```bash
 mkdir -p .cursor/rules
-curl -o .cursor/rules/gotcha.mdc \
-  https://raw.githubusercontent.com/luckychen2018/Gotcha/main/cursor/rules/gotcha.mdc
+curl -o .cursor/rules/zhaocha.mdc \
+  https://raw.githubusercontent.com/luckychen2018/Gotcha/main/cursor/rules/zhaocha.mdc
 ```
 
 ## Kiro
 
 ```bash
 mkdir -p .kiro/steering
-curl -o .kiro/steering/gotcha.md \
-  https://raw.githubusercontent.com/luckychen2018/Gotcha/main/kiro/steering/gotcha.md
+curl -o .kiro/steering/zhaocha.md \
+  https://raw.githubusercontent.com/luckychen2018/Gotcha/main/kiro/steering/zhaocha.md
 ```
 
 ## VSCode Copilot
@@ -68,17 +68,17 @@ curl -o .github/copilot-instructions.md \
 
 ## 触发方式
 
-安装后，在对话中说 **"找茬"**、**"gotcha"**、**"挑刺"** 或 **"review my work"** 即可触发自我审查。
+安装后，在对话中说 **"找茬"**、**"zhaocha"**、**"挑刺"** 或 **"review my work"** 即可触发自我审查。
 
 ## 更新
 
 ```bash
 # Claude Code
 claude plugin marketplace update
-claude plugin update gotcha@gotcha-skills
+claude plugin update zhaocha@zhaocha-skills
 
 # 源码安装
-cd ~/.claude/plugins/gotcha && git pull
+cd ~/.claude/plugins/zhaocha && git pull
 
 # 手动安装 — 重新下载对应文件覆盖
 ```

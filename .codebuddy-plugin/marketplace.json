@@ -1,5 +1,5 @@
 {
-    "name": "gotcha-skills",
+    "name": "zhaocha-skills",
     "description": "GOTCHA! 找茬 for CodeBuddy — Systematic self-critique skill. Six-category audit, three intensity levels. Trigger on '找茬', 'gotcha', 'review my work'.",
     "version": "1.0.0",
     "owner": {
@@ -8,7 +8,7 @@
     },
     "plugins": [
         {
-            "name": "gotcha",
+            "name": "zhaocha",
             "description": "GOTCHA! 找茬 — Find bugs, edge cases, security issues before the user does. Six audit categories: Correctness, Security, Robustness, Performance, Design, Completeness.",
             "version": "1.0.0",
             "source": "./"

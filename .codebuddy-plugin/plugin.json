@@ -1,5 +1,5 @@
 {
-    "name": "gotcha",
+    "name": "zhaocha",
     "version": "1.0.0",
     "description": "GOTCHA! 找茬 — Systematic self-critique for CodeBuddy. Proactively audits output for bugs, edge cases, security issues, and design flaws. Trigger on '找茬', 'gotcha', 'review my work'.",
     "author": {
@@ -10,7 +10,7 @@
     "repository": "https://github.com/luckychen2018/Gotcha",
     "license": "MIT",
     "keywords": [
-        "gotcha",
+        "zhaocha",
         "code-review",
         "self-critique",
         "找茬",

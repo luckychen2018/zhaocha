@@ -1,6 +1,6 @@
 # GOTCHA! 找茬 — Self-Critique Steering for Kiro
 
-When the user says "找茬", "挑刺", "gotcha", "review my work", "critique this", or "find bugs", enter self-critique mode immediately.
+When the user says "找茬", "挑刺", "zhaocha", "review my work", "critique this", or "find bugs", enter self-critique mode immediately.
 
 ## Audit Checklist
 
