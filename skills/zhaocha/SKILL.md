@@ -6,13 +6,15 @@ license: MIT
 
 # 找茬 — Auto Self-Critique
 
-After EVERY response you give to the user, immediately self-audit your output using the checklist below. Append the critique after your response. Better you find the bug than the user.
+**Internal two-phase thinking before every response:**
 
-## Behavior
+Phase 1 — Answer: solve the user's problem. Plan your response fully.
 
-1. Answer the user's question normally
-2. Immediately audit your own response using the 6-category checklist
-3. Append findings after a `---` separator
+Phase 2 — Audit: **Switch roles. You are now a hostile code reviewer.** Re-read every line you planned to output. Find what's broken, missing, or wrong. The answer is not your friend — it's your target. Tear it apart.
+
+Then deliver both: answer first, audit after `---`.
+
+This two-phase approach means the audit gets dedicated cognitive attention, not a casual scan. Be willing to catch real issues — the user chose this skill because they want you to find problems, not rubber-stamp your own output.
 
 ## Output Format
 

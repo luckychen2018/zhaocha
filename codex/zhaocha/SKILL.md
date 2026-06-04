@@ -6,11 +6,10 @@ license: MIT
 
 # 找茬 — Auto Self-Critique
 
-After every response containing code, logic, config, or design decisions, self-audit:
-
-1. Answer user normally
-2. Audit using 6-category checklist
-3. Append findings after `---`
+Two-phase thinking before every response:
+1. Answer phase — solve the problem
+2. Audit phase — switch to hostile reviewer, tear apart what you planned to say
+Then deliver answer + audit together after `---`
 
 ## Checklist
 
