@@ -45,6 +45,25 @@ claude plugin marketplace add luckychen2018/zhaocha
 claude plugin install zhaocha@zhaocha-skills
 ```
 
+或手动安装（含 hook 自动激活）：
+
+```bash
+git clone https://github.com/luckychen2018/zhaocha ~/.claude/plugins/zhaocha
+
+# 注册 SessionStart hook（settings.json）
+# 在 hooks.SessionStart 数组中添加：
+# {
+#   "type": "command",
+#   "command": "\"<node路径>\" \"~/.claude/hooks/zhaocha-activate.js\"",
+#   "timeout": 5,
+#   "statusMessage": "Loading 找茬 mode..."
+# }
+
+# 复制 hook 和 skill 到用户目录
+cp -r ~/.claude/plugins/zhaocha/hooks/* ~/.claude/hooks/
+cp -r ~/.claude/plugins/zhaocha/skills/* ~/.claude/skills/
+```
+
 或手动安装：
 
 ```bash

@@ -12,15 +12,18 @@ const skillPaths = [
 ];
 
 let skillContent = '';
+let loadedFrom = 'fallback';
 for (const p of skillPaths) {
   try {
     skillContent = fs.readFileSync(p, 'utf8');
+    loadedFrom = p;
     break;
   } catch (e) {}
 }
 
 if (!skillContent) {
-  // Fallback: minimal 找茬 rule
+  // Fallback: minimal 找茬 rule — user hasn't installed skill file yet
+  process.stderr.write('[zhaocha] WARNING: SKILL.md not found in ' + skillPaths.join(' or ') + '. Using fallback.\n');
   skillContent = `---
 name: zhaocha
 description: "找茬 — After answering, re-examine your output. Find any problems, flaws, or missing considerations. Think critically. Append your critique after your response."
