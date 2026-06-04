@@ -46,14 +46,14 @@ AI 编程助手天生乐观。它们交付的代码"看起来对"：
 ### Claude Code
 
 ```bash
-claude plugin marketplace add luckychen2018/Gotcha
+claude plugin marketplace add luckychen2018/zhaocha
 claude plugin install zhaocha@zhaocha-skills
 ```
 
 或手动安装：
 
 ```bash
-git clone https://github.com/luckychen2018/Gotcha ~/.claude/plugins/zhaocha
+git clone https://github.com/luckychen2018/zhaocha ~/.claude/plugins/zhaocha
 ```
 
 ### OpenAI Codex CLI
@@ -61,7 +61,7 @@ git clone https://github.com/luckychen2018/Gotcha ~/.claude/plugins/zhaocha
 ```bash
 mkdir -p ~/.codex/skills/zhaocha
 curl -o ~/.codex/skills/zhaocha/SKILL.md \
-  https://raw.githubusercontent.com/luckychen2018/Gotcha/main/codex/zhaocha/SKILL.md
+  https://raw.githubusercontent.com/luckychen2018/zhaocha/main/codex/zhaocha/SKILL.md
 ```
 
 ### 其他平台

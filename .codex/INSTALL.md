@@ -4,7 +4,7 @@
 
 ```bash
 # Clone the repo
-git clone https://github.com/luckychen2018/Gotcha /tmp/zhaocha-skill
+git clone https://github.com/luckychen2018/zhaocha /tmp/zhaocha-skill
 
 # Install skill
 mkdir -p ~/.codex/skills/zhaocha
@@ -23,11 +23,11 @@ rm -rf /tmp/zhaocha-skill
 ```bash
 mkdir -p ~/.codex/skills/zhaocha
 curl -o ~/.codex/skills/zhaocha/SKILL.md \
-  https://raw.githubusercontent.com/luckychen2018/Gotcha/main/codex/zhaocha/SKILL.md
+  https://raw.githubusercontent.com/luckychen2018/zhaocha/main/codex/zhaocha/SKILL.md
 
 mkdir -p ~/.codex/prompts
 curl -o ~/.codex/prompts/zhaocha.md \
-  https://raw.githubusercontent.com/luckychen2018/Gotcha/main/commands/zhaocha.md
+  https://raw.githubusercontent.com/luckychen2018/zhaocha/main/commands/zhaocha.md
 ```
 
 ## Project-level install
@@ -35,11 +35,11 @@ curl -o ~/.codex/prompts/zhaocha.md \
 ```bash
 mkdir -p .agents/skills/zhaocha
 curl -o .agents/skills/zhaocha/SKILL.md \
-  https://raw.githubusercontent.com/luckychen2018/Gotcha/main/codex/zhaocha/SKILL.md
+  https://raw.githubusercontent.com/luckychen2018/zhaocha/main/codex/zhaocha/SKILL.md
 
 mkdir -p .agents/prompts
 curl -o .agents/prompts/zhaocha.md \
-  https://raw.githubusercontent.com/luckychen2018/Gotcha/main/commands/zhaocha.md
+  https://raw.githubusercontent.com/luckychen2018/zhaocha/main/commands/zhaocha.md
 ```
 
 ## Trigger

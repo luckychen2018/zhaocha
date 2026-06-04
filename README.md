@@ -46,14 +46,14 @@ Three steps:
 ### Claude Code
 
 ```bash
-claude plugin marketplace add luckychen2018/Gotcha
+claude plugin marketplace add luckychen2018/zhaocha
 claude plugin install zhaocha@zhaocha-skills
 ```
 
 Or manual install:
 
 ```bash
-git clone https://github.com/luckychen2018/Gotcha ~/.claude/plugins/zhaocha
+git clone https://github.com/luckychen2018/zhaocha ~/.claude/plugins/zhaocha
 ```
 
 Then in `~/.claude/plugins/installed_plugins.json`:
@@ -78,7 +78,7 @@ Then in `~/.claude/plugins/installed_plugins.json`:
 ```bash
 mkdir -p ~/.codex/skills/zhaocha
 curl -o ~/.codex/skills/zhaocha/SKILL.md \
-  https://raw.githubusercontent.com/luckychen2018/Gotcha/main/codex/zhaocha/SKILL.md
+  https://raw.githubusercontent.com/luckychen2018/zhaocha/main/codex/zhaocha/SKILL.md
 ```
 
 ### CodeBuddy
@@ -86,7 +86,7 @@ curl -o ~/.codex/skills/zhaocha/SKILL.md \
 ```bash
 mkdir -p ~/.codebuddy/skills/zhaocha
 curl -o ~/.codebuddy/skills/zhaocha/SKILL.md \
-  https://raw.githubusercontent.com/luckychen2018/Gotcha/main/codebuddy/zhaocha/SKILL.md
+  https://raw.githubusercontent.com/luckychen2018/zhaocha/main/codebuddy/zhaocha/SKILL.md
 ```
 
 ### Cursor
@@ -94,7 +94,7 @@ curl -o ~/.codebuddy/skills/zhaocha/SKILL.md \
 ```bash
 mkdir -p .cursor/rules
 curl -o .cursor/rules/zhaocha.mdc \
-  https://raw.githubusercontent.com/luckychen2018/Gotcha/main/cursor/rules/zhaocha.mdc
+  https://raw.githubusercontent.com/luckychen2018/zhaocha/main/cursor/rules/zhaocha.mdc
 ```
 
 ## How It Works

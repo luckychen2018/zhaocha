@@ -5,14 +5,14 @@
 ### 方法一：插件市场安装（推荐）
 
 ```bash
-claude plugin marketplace add luckychen2018/Gotcha
+claude plugin marketplace add luckychen2018/zhaocha
 claude plugin install zhaocha@zhaocha-skills
 ```
 
 ### 方法二：源码安装
 
 ```bash
-git clone https://github.com/luckychen2018/Gotcha ~/.claude/plugins/zhaocha
+git clone https://github.com/luckychen2018/zhaocha ~/.claude/plugins/zhaocha
 ```
 
 然后在 `~/.claude/plugins/installed_plugins.json` 中注册。
@@ -29,7 +29,7 @@ cp skills/zhaocha/SKILL.md .claude/skills/zhaocha/
 ```bash
 mkdir -p ~/.codex/skills/zhaocha
 curl -o ~/.codex/skills/zhaocha/SKILL.md \
-  https://raw.githubusercontent.com/luckychen2018/Gotcha/main/codex/zhaocha/SKILL.md
+  https://raw.githubusercontent.com/luckychen2018/zhaocha/main/codex/zhaocha/SKILL.md
 ```
 
 ## CodeBuddy
@@ -37,7 +37,7 @@ curl -o ~/.codex/skills/zhaocha/SKILL.md \
 ```bash
 mkdir -p ~/.codebuddy/skills/zhaocha
 curl -o ~/.codebuddy/skills/zhaocha/SKILL.md \
-  https://raw.githubusercontent.com/luckychen2018/Gotcha/main/codebuddy/zhaocha/SKILL.md
+  https://raw.githubusercontent.com/luckychen2018/zhaocha/main/codebuddy/zhaocha/SKILL.md
 ```
 
 ## Cursor
@@ -45,7 +45,7 @@ curl -o ~/.codebuddy/skills/zhaocha/SKILL.md \
 ```bash
 mkdir -p .cursor/rules
 curl -o .cursor/rules/zhaocha.mdc \
-  https://raw.githubusercontent.com/luckychen2018/Gotcha/main/cursor/rules/zhaocha.mdc
+  https://raw.githubusercontent.com/luckychen2018/zhaocha/main/cursor/rules/zhaocha.mdc
 ```
 
 ## Kiro
@@ -53,7 +53,7 @@ curl -o .cursor/rules/zhaocha.mdc \
 ```bash
 mkdir -p .kiro/steering
 curl -o .kiro/steering/zhaocha.md \
-  https://raw.githubusercontent.com/luckychen2018/Gotcha/main/kiro/steering/zhaocha.md
+  https://raw.githubusercontent.com/luckychen2018/zhaocha/main/kiro/steering/zhaocha.md
 ```
 
 ## VSCode Copilot
@@ -61,7 +61,7 @@ curl -o .kiro/steering/zhaocha.md \
 ```bash
 mkdir -p .github
 curl -o .github/copilot-instructions.md \
-  https://raw.githubusercontent.com/luckychen2018/Gotcha/main/vscode/copilot-instructions.md
+  https://raw.githubusercontent.com/luckychen2018/zhaocha/main/vscode/copilot-instructions.md
 ```
 
 然后在 VSCode 设置中启用 `github.copilot.chat.codeGeneration.useInstructionFiles`。
