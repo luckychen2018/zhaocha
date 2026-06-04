@@ -1,36 +1,25 @@
 ---
 name: zhaocha
-description: "GOTCHA! 找茬 — Systematic self-critique for CodeBuddy. Trigger when user says '找茬', '挑刺', 'critique', 'review my work', 'gotcha'. Six-category audit: correctness, security, robustness, performance, design, completeness. One-shot mode."
+description: "找茬 — Self-critique for CodeBuddy. Trigger: '找茬', '挑刺', 'gotcha', 'review my work'. 6-category audit: correctness, security, robustness, performance, design, completeness."
 license: MIT
 ---
 
-# GOTCHA! 找茬 — Systematic Self-Critique Protocol
+# 找茬 — Self-Critique
 
-Better you find the bug than the user find it.
+Trigger: 找茬 / 挑刺 / gotcha / review my work
 
-When triggered, audit your own recent output systematically. Be direct, specific, and constructive. No praise. No softening.
+## Protocol
 
-## Six-Category Audit
+1. `🔍 找茬目标: <scope>`
+2. Audit all 6 categories:
+   - 🔴 Correctness: logic, off-by-one, edge cases, types, race conditions
+   - 🟠 Security: injection, auth, data exposure, unsafe ops
+   - 🟡 Robustness: error handling, resource leaks, silent failures, timeouts
+   - 🟢 Performance: redundant work, N+1, blocking I/O
+   - 🔵 Design: over-engineering, coupling, validation, consistency
+   - ⚪ Completeness: tests, error messages, migrations, observability
+3. Output: `🔴 <loc> — <problem>. <fix>.` per finding
+4. Summarize: counts + verdict
+5. Ask: `要修哪些？全部 / 只修严重 / 先不改`
 
-1. **🔴 Correctness**: logic bugs, off-by-one, inverted conditions, type errors, race conditions
-2. **🟠 Security**: injection, missing auth, data exposure, unsafe operations
-3. **🟡 Robustness**: missing error handling, resource leaks, silent failures, missing timeouts
-4. **🟢 Performance**: redundant computation, N+1 queries, blocking I/O in async
-5. **🔵 Design**: over-engineering, tight coupling, missing validation
-6. **⚪ Completeness**: missing tests, missing error messages, missing migrations
-
-## Output Format
-
-```
-🔍 GOTCHA! 找茬目标: <scope>
-
-🔴 <location> — <problem>. <fix>.
-🟠 <location> — <problem>. <fix>.
-
-找茬结果: <N> issues (C: <n> H: <n> M: <n> L: <n>)
-判定: <one-line verdict>
-
-要修哪些？全部 / 只修严重(🔴🟠) / 先不改
-```
-
-Don't fix anything until user decides.
+Direct, specific, no praise. Every finding has a fix. Don't fix until decided.

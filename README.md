@@ -36,10 +36,7 @@ AI coding agents are optimists. They ship code that "looks right" but:
 
 **GOTCHA! 找茬** is a one-shot self-audit protocol. Say the trigger word → AI systematically reviews its own work → delivers a categorized report → you decide what to fix.
 
-Three steps:
-1. **Trigger** — say "找茬" / "zhaocha" / "挑刺" / "review my work"
-2. **Audit** — AI runs a 6-category systematic checklist
-3. **Decide** — you choose: fix all / fix critical only / defer
+Say "找茬" → AI audits itself with a 6-category checklist → you choose what to fix. One trigger, one behavior. No complexity.
 
 ## Quick Start
 
@@ -110,14 +107,6 @@ curl -o .cursor/rules/zhaocha.mdc \
 | 🔵 **Design** | Over-engineering, tight coupling, missing validation |
 | ⚪ **Completeness** | Missing tests, missing error messages, missing migration plans |
 
-### Three Intensity Levels
-
-| Level | Trigger | Behavior |
-|-------|---------|----------|
-| **Sharp** (default) | 找茬 / zhaocha | Direct, critical. Full checklist. No praise. |
-| **Gentle** | 温柔一点 | Softer framing. Same thoroughness. |
-| **Brutal** | 狠一点 / 往死里批 | Maximum harshness. Every line guilty until proven innocent. |
-
 ### Example Output
 
 ```
@@ -136,20 +125,6 @@ curl -o .cursor/rules/zhaocha.mdc \
 
 要修哪些？全部 / 只修严重(🔴🟠) / 先不改
 ```
-
-## Commands
-
-| Command | What It Does |
-|---------|-------------|
-| `/zhaocha` | One-shot full audit (all 6 categories) |
-| `/zhaocha on` | Persistent mode — auto-audit after key outputs |
-| `/zhaocha off` | Disable persistent mode |
-| `/zhaocha sharp` | Sharp intensity (default) — direct, critical |
-| `/zhaocha gentle` | Gentle intensity — suggestions, no pressure |
-| `/zhaocha brutal` | Brutal intensity — code guilty until proven innocent |
-| `/zhaocha quick` | Fast audit — correctness + security only |
-| `/zhaocha security` | Security-only deep dive |
-| `/zhaocha focus <keyword>` | Focused audit — specific concern only |
 
 ## Trigger Words
 
@@ -185,14 +160,12 @@ The skill is deliberately **one-shot**, not persistent. You trigger it when you 
 ## Architecture
 
 ```
-├── skills/zhaocha/SKILL.md        ← Core skill (Claude Code format)
-├── commands/zhaocha.md            ← Slash command alias
+├── skills/zhaocha/SKILL.md        ← Core skill (one file, does everything)
 ├── codex/zhaocha/SKILL.md         ← Codex variant
 ├── codebuddy/zhaocha/SKILL.md     ← CodeBuddy variant
 ├── cursor/rules/zhaocha.mdc       ← Cursor rule
 ├── kiro/steering/zhaocha.md       ← Kiro steering file
 ├── vscode/                       ← VSCode Copilot instructions
-├── agents/zhaocha-reviewer.md     ← Standalone review agent
 ├── plugin.json                   ← Plugin metadata
 ├── .claude-plugin/               ← Claude Code marketplace
 └── .codebuddy-plugin/            ← CodeBuddy marketplace
