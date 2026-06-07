@@ -1,53 +1,43 @@
 #!/usr/bin/env node
 // zhaocha — SessionStart activation hook
-// Injects 找茬 self-critique instruction into every session
+// Injects 找茬 two-round protocol into every session:
+//   Round 1: Clean answer + "🔍 找茬? c" invitation
+//   Round 2: User sends "c" → critique previous answer
 
 const fs = require('fs');
 const path = require('path');
 
-// Read SKILL.md from the installed skill location
 const skillPaths = [
-  path.join(__dirname, '..', 'skills', 'zhaocha', 'SKILL.md'),           // user install
-  path.join(__dirname, '..', '..', 'skills', 'zhaocha', 'SKILL.md'),      // plugin install
+  path.join(__dirname, '..', 'skills', 'zhaocha', 'SKILL.md'),
+  path.join(__dirname, '..', '..', 'skills', 'zhaocha', 'SKILL.md'),
 ];
 
 let skillContent = '';
-let loadedFrom = 'fallback';
 for (const p of skillPaths) {
   try {
     skillContent = fs.readFileSync(p, 'utf8');
-    loadedFrom = p;
     break;
   } catch (e) {}
 }
 
 if (!skillContent) {
-  // Fallback: minimal 找茬 rule — user hasn't installed skill file yet
-  process.stderr.write('[zhaocha] WARNING: SKILL.md not found in ' + skillPaths.join(' or ') + '. Using fallback.\n');
+  process.stderr.write('[zhaocha] WARNING: SKILL.md not found. Using fallback.\n');
   skillContent = `---
 name: zhaocha
-description: "找茬 — After answering, re-examine your output. Find any problems, flaws, or missing considerations. Think critically. Append your critique after your response."
+description: "找茬 — Two-round self-critique protocol"
 ---
 
 # 找茬
 
-回答用户问题后，重新审视你的输出。找出任何问题、漏洞、遗漏。批判地思考。把审查结果追加在回复后面。
-
-Output:
-
-\`\`\`
-<answer>
-
----
-🔍 找茬:
-<your critique — anything wrong, missing, or could be better>
-\`\`\`
+回答用户问题后只输出干净答案。末尾加"🔍 找茬? c"邀请用户触发第二轮审查。
+用户输入c/找茬时对上一轮答案进行批判性审查。
 `;
 }
 
-// Strip YAML frontmatter
 const body = skillContent.replace(/^---[\s\S]*?---\s*/, '');
 
-const output = 'ZHAOCHA ACTIVE — After every response, re-examine your output critically.\n\n' + body;
+const output =
+  'ZHAOCHA TWO-ROUND ACTIVE\n\n' +
+  body;
 
 process.stdout.write(output);

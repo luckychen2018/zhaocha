@@ -34,7 +34,7 @@ AI coding agents are optimists. They ship code that "looks right" but:
 
 ## The Solution
 
-**找茬** auto-audits every response. Claude answers → immediately self-critiques → delivers both together. No extra trigger needed. You get the answer AND the quality check in one message.
+**找茬** is a two-round protocol. Claude answers cleanly → invites critique with "🔍 找茬? c" → you type `c` → Claude critiques its own answer in a separate round. Clean answers, sharp critiques, no contamination.
 
 ## Quick Start
 
@@ -105,32 +105,31 @@ curl -o .cursor/rules/zhaocha.mdc \
 | 🔵 **Design** | Over-engineering, tight coupling, missing validation |
 | ⚪ **Completeness** | Missing tests, missing error messages, missing migration plans |
 
-### Example Output
+### Example Interaction
 
 ```
-🔍 GOTCHA! 找茬目标: last response (user auth middleware)
+User: add auth middleware to /api/admin routes
+Claude: [clean implementation with code, no critique inline]
+        🔍 找茬? c
 
-🔴 src/auth.ts:42 — Token expiry uses `<` not `<=`, rejects tokens at exact expiry boundary. Change to `<=`.
-🟠 src/auth.ts:38 — JWT secret read from process.env without fallback check. Add startup validation.
-🟡 src/auth.ts:55 — db.query() has no timeout, can hang indefinitely. Add 5s query timeout.
-🟢 src/auth.ts:67 — Password hash computed on every request even when cache hit. Move inside cache-miss branch.
-
-┌──────────────────────────────────────────┐
-│        GOTCHA! 找茬结果                    │
-│  Critical: 1  High: 1  Medium: 1  Low: 1  │
-│  判定: Fix critical + high before shipping  │
-└──────────────────────────────────────────┘
-
-要修哪些？全部 / 只修严重(🔴🟠) / 先不改
+User: c
+Claude: 🔍 找茬:
+        - Token expiry uses `<` not `<=`, rejects tokens at exact boundary
+        - JWT secret read from process.env without startup validation
+        - db.query() has no timeout, can hang indefinitely
+        - Password hash computed on every request even on cache hit
 ```
 
 ## Trigger Words
 
+After Claude's answer, send one of these to trigger the critique round:
+
 | Language | Trigger Words |
 |----------|--------------|
-| Chinese | 找茬、挑刺、批评、批判、自查、挑毛病、狠狠批评我 |
-| English | zhaocha、gotcha、review my work、critique this、find bugs、audit |
-| Hybrid | 来挑个刺、帮我找茬、自我审查 |
+| Chinese | 找茬、挑刺、c |
+| English | zhaocha、gotcha、c |
+
+Send just the trigger word — nothing else. The critique round begins immediately.
 
 ## Philosophy
 

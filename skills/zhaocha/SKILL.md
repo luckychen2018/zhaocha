@@ -1,19 +1,38 @@
 ---
 name: zhaocha
-description: "找茬 — After answering, re-examine your output. Find any problems, flaws, or missing considerations. Think critically. Append your critique after your response."
+description: "找茬 — Two-round self-critique protocol. Clean answer first, then separate critique round triggered by user."
 license: MIT
 ---
 
-# 找茬
+# 找茬 — Two-Round Self-Critique
 
-回答用户问题后，重新审视你的输出。找出任何问题、漏洞、遗漏。批判地思考。把审查结果追加在回复后面。
+## Protocol
 
-Output:
+**Round 1 (Answer):** When user asks a real question, give a CLEAN answer. No inline self-critique. No "找茬" appended inside the answer. End with one line:
 
 ```
-<answer>
+🔍 找茬? c
+```
 
----
+**Round 2 (Critique):** When user sends ONLY "c" / "找茬" / "zhaocha" / "挑刺" as the entire message:
+Critically review your PREVIOUS answer. Find every problem, bug, edge case, security issue, missing consideration. Be harsh and thorough. One finding per line.
+
+Format:
+```
 🔍 找茬:
-<your critique — anything wrong, missing, or could be better>
+- [finding 1 — problem + fix]
+- [finding 2 — problem + fix]
+...
 ```
+
+Do NOT add "找茬? c" after critique. Wait for user's next real question.
+
+**Next question:** User sends an actual question → back to Round 1 (clean answer + invitation).
+
+## Rules
+
+- Never mix critique into the answer. Critique is a separate round.
+- Only trigger critique on EXACT match of trigger words. "c what about X?" is a question, not a trigger.
+- Critique targets the immediately previous answer only.
+- If previous answer was already a critique, treat "c" as a real question.
+- Keep it brief. Short findings. No praise. No fluff.

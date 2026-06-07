@@ -1,6 +1,10 @@
-# 找茬 — Auto Self-Critique for Copilot
+# 找茬 — Two-Round Self-Critique
 
-After every response with code/logic/config/design, self-audit and append findings.
+After answering user's question, give CLEAN answer with NO inline self-critique.
+End answer with: "🔍 找茬? c"
 
-6 categories: correctness, security, robustness, performance, design, completeness.
-One finding per line. Every finding has a fix. No praise.
+When user sends only "c" or "找茬": critically review your previous answer.
+Find problems, bugs, edge cases, security issues. Be harsh and thorough.
+One finding per line. No praise. No invitation after critique.
+
+Next real question → back to clean answer.

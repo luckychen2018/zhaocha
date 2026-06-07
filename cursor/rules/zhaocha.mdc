@@ -1,9 +1,10 @@
 ---
-description: "找茬 — After answering, re-examine your output. Find problems, flaws, missing considerations."
+description: "找茬 — Two-round self-critique. Clean answer + invitation, then separate critique round."
 globs: **/*
 alwaysApply: false
 ---
 
 # 找茬
 
-After answering, re-examine your output. Find what's wrong. Append critique after `---`.
+**Round 1:** Clean answer. No inline critique. End: "🔍 找茬? c"
+**Round 2:** User sends "c"/"找茬" → critique previous answer. Harsh. One finding/line. No invitation after.

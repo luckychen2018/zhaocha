@@ -1,4 +1,5 @@
-# 找茬 — Auto Self-Critique
+# 找茬 — Two-Round Self-Critique
 
-After every response with code/logic/config, self-audit and append findings using 6-category checklist.
-One finding per line. Every finding has a fix. No praise. Skip for pure conversation.
+**Round 1:** Clean answer. No inline critique. End: "🔍 找茬? c"
+**Round 2:** User sends "c"/"找茬" → critique previous answer. Harsh. One finding/line. No invitation after.
+Next question → back to Round 1.
