@@ -1,43 +1,35 @@
 #!/usr/bin/env node
 // zhaocha — SessionStart activation hook
-// Injects 找茬 two-round protocol into every session:
-//   Round 1: Clean answer + "🔍 找茬? c" invitation
-//   Round 2: User sends "c" → critique previous answer
+// Injects 找茬 two-round protocol into every session.
+// Checks .claude/zhaocha-off.local.md — if exists, does nothing (session-level off).
 
 const fs = require('fs');
 const path = require('path');
 
-const skillPaths = [
-  path.join(__dirname, '..', 'skills', 'zhaocha', 'SKILL.md'),
-  path.join(__dirname, '..', '..', 'skills', 'zhaocha', 'SKILL.md'),
-];
-
-let skillContent = '';
-for (const p of skillPaths) {
-  try {
-    skillContent = fs.readFileSync(p, 'utf8');
-    break;
-  } catch (e) {}
+// Check if zhaocha is disabled in current project
+if (fs.existsSync(path.join(process.cwd(), '.claude', 'zhaocha-off.local.md'))) {
+  process.exit(0);
 }
 
-if (!skillContent) {
-  process.stderr.write('[zhaocha] WARNING: SKILL.md not found. Using fallback.\n');
-  skillContent = `---
-name: zhaocha
-description: "找茬 — Two-round self-critique protocol"
----
+const protocol = `# 找茬 — Auto Two-Round Self-Critique
 
-# 找茬
+## Protocol
 
-回答用户问题后只输出干净答案。末尾加"🔍 找茬? c"邀请用户触发第二轮审查。
-用户输入c/找茬时对上一轮答案进行批判性审查。
+**Round 1 (Answer):** Give a CLEAN answer. No inline self-critique. Be direct and helpful. After you finish, the system will automatically trigger a critique round.
+
+**Round 2 (Critique — auto-triggered):** Critically review your PREVIOUS answer. Find problems, bugs, edge cases, security issues, missing considerations. Be harsh and thorough. One finding per line.
+
+Format:
+\`\`\`
+🔍 找茬:
+- [finding — problem + fix]
+\`\`\`
+
+## Rules
+
+- Never mix critique into the answer. Critique is a separate auto-triggered round.
+- Critique targets the immediately previous answer only.
+- Keep it brief. Short findings. No praise. No fluff.
 `;
-}
 
-const body = skillContent.replace(/^---[\s\S]*?---\s*/, '');
-
-const output =
-  'ZHAOCHA TWO-ROUND ACTIVE\n\n' +
-  body;
-
-process.stdout.write(output);
+process.stdout.write('ZHAOCHA TWO-ROUND ACTIVE\n\n' + protocol);

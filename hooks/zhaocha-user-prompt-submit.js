@@ -1,9 +1,17 @@
 #!/usr/bin/env node
 // zhaocha — UserPromptSubmit hook
-// Detects "c"/"找茬" trigger words and injects critique-round context.
-// On real questions, injects clean-answer reminder.
+// Detects trigger words → injects critique context.
+// On real questions → injects clean-answer reminder.
+// Checks .claude/zhaocha-off.local.md — if exists, does nothing.
+
+const fs = require('fs');
+const path = require('path');
 
 const TRIGGERS = new Set(['c', '找茬', 'zhaocha', '挑刺', 'gotcha']);
+
+if (fs.existsSync(path.join(process.cwd(), '.claude', 'zhaocha-off.local.md'))) {
+  process.exit(0);
+}
 
 let input = '';
 process.stdin.on('data', chunk => { input += chunk; });
@@ -14,7 +22,6 @@ process.stdin.on('end', () => {
     const promptLower = prompt.toLowerCase();
 
     if (TRIGGERS.has(prompt) || TRIGGERS.has(promptLower)) {
-      // Critique round — model should review its previous answer
       process.stdout.write(JSON.stringify({
         hookSpecificOutput: {
           hookEventName: 'UserPromptSubmit',
@@ -23,22 +30,17 @@ process.stdin.on('end', () => {
             'Find problems, bugs, edge cases, security issues, missing considerations. ' +
             'Be harsh and thorough. One finding per line. ' +
             'Format: "🔍 找茬:" then bullet list. ' +
-            'Do NOT add "找茬? c" at the end of critique. ' +
             'Wait for next real question.'
         }
       }));
     } else if (prompt.length > 0) {
-      // Real question — remind model to give clean answer + invitation
       process.stdout.write(JSON.stringify({
         hookSpecificOutput: {
           hookEventName: 'UserPromptSubmit',
           additionalContext:
-            'ZHAOCHA: Clean answer. No inline self-critique. ' +
-            'End answer with "🔍 找茬? c"'
+            'ZHAOCHA: Clean answer. No inline self-critique.'
         }
       }));
     }
-  } catch (e) {
-    // Silent fail — never block user input
-  }
+  } catch (e) {}
 });
